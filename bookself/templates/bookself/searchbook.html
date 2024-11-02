@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Book</title>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bookself/css/searchbook.css' %}">
+</head>
+<body>
+    {% include "bookself/snippets/navbar.html" %}
+    <div class="search-book" id="myBodyContent">
+        <div class="text-light pt-5 m-4 d-flex align-items-center flex-column">
+    <h2 class="display-4">Search your book</h2>
+    <div class="container-fluid w-25 mt-3">
+    <form method="POST" class="d-flex" role="search">
+        {% csrf_token %}
+          <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+    </div>
+    {% include "bookself/snippets/books.html" %}
+    {% include "snippets/script.html" %}
+</body>
+</html>

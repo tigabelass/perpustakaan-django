@@ -1,0 +1,15 @@
+{% load static %}
+<div class="list-book d-flex w-auto mt-3 p-5 justify-content-center flex-wrap">
+  {% for book in books %}
+  <div class="card m-2" style="width: 18rem;">
+    <img src="{{book.image.url}}" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{book.title}}</h5>
+      <p class="card-text text-body-secondary">Genre: {{book.genre}}</p>
+      <p class="card-text">Author: {{book.author}}</p>
+      <p class="card-text">Tersedia: {{book.copies}}</p>
+      <a href="{% url 'book_view' book_id=book.id %}" class="btn btn-outline-primary d-flex justify-content-center">Click</a>
+    </div>
+</div>
+{% endfor %}
+</div>

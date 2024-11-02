@@ -1,0 +1,16 @@
+html {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+body::-webkit-scrollbar {
+    width: 0; 
+}
+.search-book{
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-image: url("/static/bookself/img/bg-searchbook.jpg");
+    background-position: center;
+    height: 500px;
+    background-size: cover;
+}

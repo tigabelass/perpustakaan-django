@@ -1,0 +1,16 @@
+html {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+body::-webkit-scrollbar {
+    width: 0; 
+}
+.heading {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-image: url("/static/bookself/img/bg-bookself.jpg");
+    background-position: center;
+    height: 500px;
+    background-size: cover;
+}

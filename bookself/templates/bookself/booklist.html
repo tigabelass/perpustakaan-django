@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'bookself/css/booklist.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.css' %}">
+</head>
+<body>
+    {% include "bookself/snippets/navbar.html" %}
+    <div class="heading" id="myBodyContent">
+        <div class="text-dark pt-5 m-4 d-flex align-items-center flex-column ">
+            <h1 class="display-4 pt-5">{{heading}}</h1>
+            <p class="lead">{{subheading}}</p>
+            <p>{{text}}</p>
+            <a class="btn btn-outline-primary" href="/search-book">{{buttons}}</a>
+        </div>
+    </div>
+    <h1 class="display-4 d-flex justify-content-center">List Books</h1>
+    {% include "bookself/snippets/books.html" %}
+    {% include "snippets/script.html" %}
+</body>
+</html>

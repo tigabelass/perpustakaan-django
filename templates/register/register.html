@@ -1,0 +1,33 @@
+{% extends "register/base_login.html" %}
+{% load static %}
+
+{% block title %}Sign up{% endblock title %}
+
+{% block form %}
+<div class="card-header text-center">
+    Sign up
+  </div>
+  <div class="card-body">
+    <div class="d-grid d-md-flex justify-content-md-center mb-3">
+      <img src="{% static 'img/logo.png' %}" width="auto" height="80">
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" name="username" class="form-control" id="id_username" placeholder="Username" aria-label="Username" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password1" class="form-control" id="id_password1" placeholder="Password" aria-label="Password" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password2" class="form-control" id="id_password2" placeholder="Confirm password" aria-label="Confirm password" required>
+        </div>
+        <div class="d-grid d-md-flex justify-content-md-center mb-3">
+            <button type="submit" class="btn btn-outline-primary">Sign up</button>
+        </div>
+    </form>
+  <div class="card-footer text-body-secondary text-center">
+    have account?
+    <a href="{% url 'login' %}">Login</a>
+  </div>
+{% endblock form %}

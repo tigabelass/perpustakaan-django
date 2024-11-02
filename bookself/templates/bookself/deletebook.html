@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delete book</title>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.css' %}">
+</head>
+<body>
+    {% include "bookself/snippets/navbar.html" %}
+    <div class="heading" id="myBodyContent">
+        <div class="text-light pt-5 m-4 d-flex align-items-center flex-column">
+    <h2 class="display-4">Delete book</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="query" class="form-label">Masukan judul atau pembuat:</label>
+            <input type="text" name="query" class="form-control" required>
+        </div>
+        <div class="d-grid d-md-flex justify-content-md-center">
+            <button type="submit" class="btn btn-outline-primary">Delete</button>
+        </div>
+    </form>
+    </div>
+    </div>
+    {% include "snippets/script.html" %}
+</body>
+</html>

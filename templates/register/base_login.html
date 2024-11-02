@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.css' %}">
+</head>
+<body class="bg-primary-subtle">
+    {% include "snippets/navbar.html" %}
+    <div class="card-form w-100 h-100 d-flex justify-content-center mt-5">
+        <div class="card w-25 mt-5">
+            {% block form %}
+            
+            {% endblock form %}
+        </div>
+    </div>
+        {% include "snippets/script.html" %}
+</body>
+</html>

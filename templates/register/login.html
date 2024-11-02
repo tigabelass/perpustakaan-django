@@ -1,0 +1,29 @@
+{% extends "register/base_login.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+
+{% block form %}
+<div class="card-header text-center">
+    Login
+  </div>
+  <div class="card-body">
+      <div class="d-grid d-md-flex justify-content-md-center mb-3">
+          <img src="{% static 'img/logo.png' %}" width="auto" height="80">
+        </div>
+    <form method="POST" action="{% url 'login'%}?next={{book_list}}">
+        {% csrf_token %}
+        <div class="mb-4">
+            <input type="text" name="username" class="form-control" id="id_username" placeholder="Username" aria-label="Username" required>
+        </div>
+        <div class="mb-4">
+            <input type="password" name="password" class="form-control" id="id_password" placeholder="Password" aria-label="Password" required>
+        </div>
+        <div class="d-grid d-md-flex justify-content-md-center mb-3">
+            <button type="submit" class="btn btn-outline-primary">Login</button>
+        </div>
+    </form>
+  <div class="card-footer text-body-secondary text-center">
+    haven't account?
+    <a href="{% url 'register' %}">sign up</a>
+  </div>
+{% endblock form %}

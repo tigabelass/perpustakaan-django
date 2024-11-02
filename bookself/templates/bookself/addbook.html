@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add book</title>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bookself/css/addbook.css' %}">
+
+</head>
+<body>
+    {% include "bookself/snippets/navbar.html" %}
+    <div class="heading" id="myBodyContent">
+        <div class="text-light fw-bold p-5 m-4 d-flex align-items-start flex-column">
+            <h2 class="display-4 p-3">Tambahkan buku</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-label">Judul Buku</label>
+                    <input type="text" name="title" class="form-control" id="booktitle" required>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" name="author" class="form-control" id="authorbook" required>
+                </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label">Genre</label>
+                    <input type="text" name="genre" class="form-control" id="genrebook" required>
+                </div>
+                <div class="mb-3">
+                    <label for="copies" class="form-label">Copies</label>
+                    <input type="text" name="copies" class="form-control" id="copiesbook" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" name="description" id="descriptionbook" rows="4"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Foto</label>
+                    <input type="file" name="image" class="form-control" id="fotobook" required>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </form>      
+        </div>
+    </div>
+    {% include "snippets/script.html" %}
+</body>
+</html>
