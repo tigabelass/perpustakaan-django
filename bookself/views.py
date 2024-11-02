@@ -10,6 +10,14 @@ import os
 from django.conf import settings
 
 # Create your views here.
+def index(request):
+    context = {
+        'title': 'Home',
+        'heading': 'Library Mawut',
+        'subheading': 'pinjam dan baca buku disini'
+    }
+    return render(request, 'index.html', context)
+
 def user_is_confirmed(user):
     if hasattr(user, 'userprofile'):
         return  user.is_authenticated and user.userprofil.is_confirmed

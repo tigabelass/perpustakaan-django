@@ -4,7 +4,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 urlpatterns = [
-    path('', views.book_list, name="book_list"),
+    path('booklist/', views.book_list, name="book_list"),
+    path('', views.index, name='home'),
     path('book-view/<int:book_id>/', views.book_view, name="book_view"),
     path('add-book/', views.add_book, name="add_book"),
     path('delete-book/', views.delete_book, name="delete_book"),
