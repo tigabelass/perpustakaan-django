@@ -80,10 +80,10 @@ DATABASES = {
         'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
         'NAME': 'postgres',
         'USER': 'postgres.imzaawnnndjscusowdlx',
+        'PORT': '6543',
         'PASSWORD': 'qpb024Q0vKJ25tzV',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
