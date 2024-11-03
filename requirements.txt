@@ -2,6 +2,7 @@ asgiref==3.8.1
 Django==5.1.1
 mysqlclient @ file:///C:/Dev/django/mysqlclient-2.2.4-cp312-cp312-win_amd64.whl#sha256=e1ebe3f41d152d7cb7c265349fdb7f1eca86ccb0ca24a90036cde48e00ceb2ab
 pillow==11.0.0
+psycopg2==2.9.10
 sqlparse==0.5.1
 tzdata==2024.2
 wheel==0.44.0

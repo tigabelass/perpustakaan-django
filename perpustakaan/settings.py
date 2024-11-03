@@ -76,10 +76,11 @@ WSGI_APPLICATION = 'perpustakaan.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bookself',
-        'USER': 'root',
-        'PASSWORD': 'aallddoo',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
+        'NAME': 'postgres',
+        'USER': 'postgres.imzaawnnndjscusowdlx',
+        'PASSWORD': 'qpb024Q0vKJ25tzV',
     }
 }
 
@@ -119,7 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR / 'static')
 ]
