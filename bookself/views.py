@@ -16,7 +16,7 @@ def index(request):
         'heading': 'Library Mawut',
         'subheading': 'pinjam dan baca buku disini'
     }
-    return render(request, 'index.html', context)
+    return render(request, 'base.html', context)
 
 def user_is_confirmed(user):
     if hasattr(user, 'userprofile'):
