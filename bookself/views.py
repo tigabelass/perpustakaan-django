@@ -59,12 +59,13 @@ def add_book(request):
         image = request.FILES['image' ]
         fs = FileSystemStorage()
         filename = fs.save(image.name, image)
-        cropped_img = crop_images(fs.path(filename))
-        
-        
-        
-        book = models.Book(title=title, author=author, genre=genre, copies=copies, description=description, image=cropped_img)
+        cropped_img_path = crop_images(fs.path(filename))
+
+        book = models.Book(title=title, author=author, genre=genre, copies=copies, description=description, image=cropped_img_path)
         book.save()
+        with open(cropped_img_path, "rb") as img_file:
+            book.image.save(os.path.basename(cropped_img_path), img_file, save=True)
+
         return redirect('book_view', book_id=book.id)
 
     return render(request, 'bookself/addbook.html')
@@ -80,7 +81,10 @@ def book_view(request, book_id):
 @login_required
 def delete_book(request):
     if request.method == "POST":
-        query = request.POST['query']
+        query = request.POST.get('query', '').strip()
+        if not query:
+            return render(request, 'bookself/deletebook.html', {'error': 'Masukkan judul atau penulis buku!'})
+
         books = models.Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
         if books.exists():
             books.delete()
@@ -122,17 +126,27 @@ def search_book(request):
     
 def crop_images(img_path):
     img = Image.open(img_path)
-    
-    width, height= img.size
+
+    width, height = img.size
     new_size = min(width, height)
-    img_cropped = img.crop((0,0, new_size, new_size))
-    
+
+    # Potong di tengah
+    left = (width - new_size) / 2
+    top = (height - new_size) / 2
+    right = (width + new_size) / 2
+    bottom = (height + new_size) / 2
+    img_cropped = img.crop((left, top, right, bottom))
+
+    # Konversi ke RGB jika dalam mode RGBA
+    if img_cropped.mode == "RGBA":
+        img_cropped = img_cropped.convert("RGB")
+
+    # Simpan di folder 'book_images'
     base_filename = os.path.basename(img_path)
     new_dir = os.path.join(settings.MEDIA_ROOT, 'book_images')
-    if not os.path.exists(new_dir):
-        os.makedirs(new_dir)
+    os.makedirs(new_dir, exist_ok=True)
+
     newpath_img = os.path.join(new_dir, base_filename)
     
-    img_cropped.save(newpath_img)
-    
-    return f"book_images/{base_filename}"
+    img_cropped.save(newpath_img, format="JPEG")  # Pastikan format JPEG
+    return newpath_img
